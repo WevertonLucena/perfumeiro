@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}"
+	xmlns:lucena="http://lucenasolucoes.com.br">
+
+<head>
+	<title>Família Olfativa</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}"/>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1 th:if="${familiaOlfativa.nova}">Cadastro de família olfativa</h1>
+					<h1 th:unless="${familiaOlfativa.nova}" th:text="|Edição da família olfativa ${familiaOlfativa.nome}|">Edição da família olfativa</h1>
+				</div>
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/familias}">
+							<i class="glyphicon  glyphicon-search"></i> <span class="hidden-xs  hidden-sm">Pesquisar Famílias Olfativas</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="POST" th:object="${familiaOlfativa}" class="form-vertical  js-form-loading"
+			th:action="${familiaOlfativa.nova} ? @{/familias/nova} : @{/familias/{id}(id=${familiaOlfativa.id})}">
+			<lucena:message/>
+			
+			<input type="hidden" th:field="*{id}">
+			
+			<div class="row">
+				<div class="form-group  col-sm-9 bw-required" lucena:classforerror="nome">
+					<label for="nome" class="control-label">Nome</label>
+					<input type="text" th:field="*{nome}" class="form-control" id="nome" autofocus="autofocus"/>
+				</div>
+			</div>
+				
+			<button type="submit" class="btn  btn-primary">Salvar</button>
+		</form>
+	</div>
+</section>
+<th:block layout:fragment="javascript-extra">
+
+</th:block>
+
+</html>

@@ -1,0 +1,18 @@
+# Eclipse
+.DS_Store
+Servers/*
+.metadata
+.settings/
+.classpath
+.project
+target/
+bin/
+rebel.xml
+.mvn*
+mvnw*
+# Maven
+log/
+Procfile
+#github
+/src/main/resources/relatorios/*.jasper
+/src/main/resources/env/*.properties
